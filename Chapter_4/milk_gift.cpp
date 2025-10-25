@@ -12,18 +12,18 @@ using namespace std;
 int n;
 int year;
 vector<int> num;
-int res = 0;
+int cnt = 0;
 
 void Try(int k, int curr_sum) {
     if(k > n) {
         if(curr_sum >= year) {
-            res++;
+            cnt++;
         }
         return;
     }
 
     if(curr_sum >= year) {
-        res += (1 << (n + 1 - k));
+        cnt += (1 << (n + 1 - k));
         return;
     }
 
@@ -42,5 +42,5 @@ int main() {
     cin >> year;
 
     Try(1, 0);
-    cout << res << endl;
+    cout << cnt << endl;
 }

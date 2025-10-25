@@ -21,7 +21,7 @@ int manhattan_dist(Point a, Point b) {
     return abs(xa - xb) + abs(ya - yb);
 }   
 
-int n, L, res = 0;
+int n, L, cnt = 0;
 vector<Point> points;
 vector<int> visited;
 vector<int> x;
@@ -41,7 +41,7 @@ void Try(int k) {
             dist += manhattan_dist(points[x[k - 1]], points[x[k]]);
 
             if(k == n) {
-                if(dist + manhattan_dist(points[x[k]], points[1]) <= L) res++;
+                if(dist + manhattan_dist(points[x[k]], points[1]) <= L) cnt++;
             } else {
                 Try(k + 1);
             }
@@ -67,5 +67,5 @@ int main() {
     visited[1] = 1;
     x[1] = 1;
     Try(2);
-    cout << res << endl;
+    cout << cnt << endl;
 }

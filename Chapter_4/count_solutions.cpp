@@ -5,7 +5,7 @@
 using namespace std;
 
 int n, m;
-int res = 0;
+int cnt = 0;
 int curr_sum = 0;
 vector<int> a, x;
 
@@ -15,7 +15,7 @@ void try_solutions(int k) {
         curr_sum += a[k] * x[k];
 
         if(k == n) {
-            if(curr_sum == m) res++;
+            if(curr_sum == m) cnt++;
         } else {
             try_solutions(k + 1);
         }
@@ -38,5 +38,5 @@ int main() {
     }
 
     try_solutions(1);
-    cout << res << endl;
+    cout << cnt << endl;
 }
