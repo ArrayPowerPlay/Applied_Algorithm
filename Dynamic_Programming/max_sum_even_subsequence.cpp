@@ -1,8 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Tính tổng của dãy con chẵn có tổng lớn nhất
+
 // Solution 1: using DP
-int max_even_subsequence(vector<int> &nums) {
+int maxSumEvenSubsequence(vector<int> &nums) {
     int best = 0;
     const int n = nums.size();
     // Max even subsequence that ends in index i
@@ -24,7 +26,7 @@ int max_even_subsequence(vector<int> &nums) {
 }
 
 // Solution 2: using simple logic strategy
-int max_even_subsequence2(vector<int> &nums) {
+int maxSumEvenSubsequence2(vector<int> &nums) {
     const int n = nums.size();
     int res = 0, curr = 0;
 
@@ -51,6 +53,6 @@ int main() {
 
     for(int i = 0; i < n; ++i) cin >> nums[i];
 
-    cout << max_even_subsequence(nums) << endl;
-    cout << max_even_subsequence2(nums) << endl;
+    cout << maxSumEvenSubsequence(nums) << endl;
+    cout << maxSumEvenSubsequence2(nums) << endl;
 }
