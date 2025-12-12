@@ -11,7 +11,8 @@ bool check(int i, vector<int> nums) {
     if(visited[i]) return false;
     else {
         if(i == 0) return true;
-        if(visited[i - 1] && nums[i - 1] == nums[i]) return false;
+        // Nếu phần tử trước chưa được chọn và bằng phần tử hiện tại thì bỏ qua
+        if(visited[i - 1] == 0 && nums[i - 1] == nums[i]) return false;
         return true;
     }
 }
@@ -27,7 +28,7 @@ void Try(int k, const vector<int> &nums, vector<vector<int>> &res) {
         if(k == nums.size() - 1) {
             res.push_back(x);
         } else {
-            Try(k + 1, nums, res);
+            Try(k + 1, nums, res); 
         }
 
         // backtrack

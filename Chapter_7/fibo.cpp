@@ -8,7 +8,7 @@ S_n = S_(n - 2) + S_(n - 1)
 Yêu cầu: Tính ký tự thứ k trong S_n (chỉ số tính từ 0)*/
 
 int main() {
-    string S1, S2;
+    string S1, S2; 
     long long k;
     cin >> S1 >> S2 >> k;
 

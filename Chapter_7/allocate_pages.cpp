@@ -4,7 +4,7 @@ using namespace std;
 /*Given an array arr[] and an integer k, where arr[i] denotes the number of pages of a book
 and k denotes total number of students. All the books need to be allocated to k students in 
 contiguous manner, with each student getting at least one book. The task is to minimize the 
-maximum number of pages allocated to a student. 
+maximum number of pages allocated to a student and output this number. 
 
 If it is not possible to allocate books to all students, return -1.*/
 
