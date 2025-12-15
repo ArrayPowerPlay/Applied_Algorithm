@@ -17,7 +17,7 @@ int maxOddIncreasingSubsequence(vector<int> &nums) {
         else {
             dp[i] = 1;
             for(int k = 1; k < i; ++k) {
-                if(nums[k] < curr && nums[k] % 2 == 1) {
+                if(nums[k] < curr && nums[k] % 2 != 0) {
                     dp[i] = max(dp[i], dp[k] + 1);
                 } 
             }
@@ -36,7 +36,7 @@ int maxEvenIncreasingSubsequence(vector<int> &nums) {
     
     for(int i = 1; i <= n; ++i) {
         int curr = nums[i];
-        if(curr % 2 == 1) dp[i] = 0;
+        if(curr % 2 != 0) dp[i] = 0;
         else {
             dp[i] = 1;
             for(int k = 1; k < i; ++k) {
