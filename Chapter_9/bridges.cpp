@@ -6,9 +6,9 @@ Cầu, đỉnh khớp là cạnh/đỉnh mà bỏ cạnh/đỉnh đó đi thì s
 liên thông của đồ thị tăng lên */
 
 /*Ta định nghĩa cấu trúc Num[u] và Low[u] trong đó Num[u] là thứ tự
-duyệt đỉnh u trong dfs và Low[u] là tổ tiên cao nhất trong cây dfs
-mà đỉnh u có thể chạm tới thông qua đường đi được tạo bởi thuật toán
-dfs*/
+duyệt đỉnh u trong dfs và Low[u] là chỉ số sao cho từ u, nếu chỉ đi 
+theo các cạnh DFS xuống dưới và TỐI ĐA 1 cạnh ngược, thì quay về được
+đỉnh có Num nhỏ nhất là bao nhiêu?*/
 
 int n, m;
 int T = 0;
@@ -42,18 +42,16 @@ void dfs(int u) {
             p[v] = u;
             dfs(v);
             low[u] = min(low[u], low[v]);
-            // Với [u, v] là 1 cạnh xuôi, nếu low[v] > num[u] thì [u, v]
-            // là 1 cầu
+            // Với [u, v] là 1 cạnh xuôi, nếu low[v] > num[u] thì [u, v] là 1 cầu
             if(low[v] > num[u]) ++numBrigdes;
             ++childs;
-            // Nếu u là đỉnh gốc của đồ thị
-            if(u == p[u]) {
-                if(childs > 1) joints[u] = true;
-            } else {
-                if(low[v] >= num[u]) joints[u] = true;
-            }
+            // Nếu u không phải đỉnh gốc
+            if(u != p[u] && low[v] >= num[u]) joints[u] = true;
         }
     }
+    // Nếu u là đỉnh gốc của đồ thị
+    if(p[u] == u && childs > 1) joints[u] = true;
+
 }
 
 int main() {

@@ -13,7 +13,7 @@ int n, m;
 vector<vector<int>> adj;
 // rev_adj[i] gồm j tức là i nối j trong đồ thị đảo cạnh
 vector<vector<int>> rev_adj;
-// Thứ tự kết thúc các đỉnh (kết thúc trước thì nằm ở đáy stack)
+// Thứ tự kết thúc các đỉnh (kết thúc cuối cùng thì nằm ở đỉnh stack)
 stack<int> finish_order;
 vector<int> visited;
 
