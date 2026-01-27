@@ -30,6 +30,29 @@ int numSquares(int n) {
     return dp[n];
 }
 
+int knapsack(int n) {
+    vector<int> squares;
+    const int INF = 1e8;
+    for(int i = 1; i <= n; ++i) {
+        if(i * i <= n) squares.push_back(i * i);
+        else break;
+    }
+
+    // Ta xử lý trường hợp chỉ có thể sử dụng duy nhất 1 tờ tiền ở 1 mệnh giá bất kỳ
+    vector<int> dp(n + 1, INF);
+    dp[0] = 0;
+
+    for(int num : squares) {
+        for(int i = n; i >= num; ++i) {
+            if(dp[i - num] != INF) {
+                dp[i] = min(dp[i], dp[i - num] + 1);
+            }
+        }
+    }
+    
+    return dp[n];
+}
+
 int main() {
     int n;
     cin >> n;

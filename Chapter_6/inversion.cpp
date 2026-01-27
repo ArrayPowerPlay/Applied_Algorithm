@@ -18,7 +18,7 @@ void count_and_mergesort(int left, int right) {
     count_and_mergesort(mid + 1, right);
 
     int i = left, j = mid + 1, k = left;
-    while(i <= left && j <= right) {
+    while(i <= mid && j <= right) {
         if(num[i] <= num[j]) {
             tmp[k++] = num[i++];
         } else {
@@ -27,7 +27,7 @@ void count_and_mergesort(int left, int right) {
         }
     }
     
-    while(i <= left) tmp[k++] = num[i++];
+    while(i <= mid) tmp[k++] = num[i++];
     while(j <= right) tmp[k++] = num[j++];
 
     for(int t = left; t <= right; ++t) {

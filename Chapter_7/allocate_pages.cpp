@@ -15,7 +15,7 @@ bool canAllocate(vector<int> &arr, int k, int limit) {
     if(k > n) return -1;
 
     // Thử chia 'page' trang sách cho sinh viên thứ i
-    int students = 1;
+    int students = 1; 
     int pages = 0;
 
     for(int num : arr) {

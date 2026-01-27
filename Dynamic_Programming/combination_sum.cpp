@@ -20,6 +20,7 @@ int main() {
     vector<long long> dp(tgt + 1, 0);
     dp[0] = 1;  // một cách để tổng bằng 0: không chọn gì
 
+    // có xét tới tính hoán vị của kết quả (ví dụ: (2, 0, 1) khác (1, 2, 0))
     for(int i = 1; i <= tgt; ++i) {
         for(int num : a) {
             if(i >= num) {

@@ -6,7 +6,6 @@ using namespace std;
 // open_cnt: number of open parentheses being added in the string
 // close_cnt: number of close parentheses being added in the string
 void back_track(int open_cnt, int close_cnt, int n, string& cur, vector<string>& res) {
-    //
     if(open_cnt == n && close_cnt == n) {
         res.push_back(cur);
         return;

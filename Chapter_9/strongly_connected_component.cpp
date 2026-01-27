@@ -27,10 +27,12 @@ void dfs1(int u) {
 }
 
 // dfs trên đồ thị đảo ngược cạnh
-void dfs2(int u) {
+// vector component lưu các đỉnh trong 1 SCC
+void dfs2(int u, vector<int> &component) {
     visited[u] = 1;
+    component.push_back(u);
     for(int v : rev_adj[u]) {
-        if(!visited[v]) dfs2(v);
+        if(!visited[v]) dfs2(v, component);
     }
 }
 
@@ -58,15 +60,26 @@ int main() {
     int res = 0;
     visited.assign(n + 1, 0);
     
+    // Lưu các đỉnh của tất cả các SCC
+    vector<vector<int>> scc_list;
+    
     while(!finish_order.empty()) {
         int u = finish_order.top();
         finish_order.pop();
 
         if(!visited[u]) {
-            dfs2(u);
+            vector<int> component;
+            dfs2(u, component);
+            scc_list.push_back(component);
+
             ++res;
         }
     }
 
-    cout << res << endl;
+    cout << "Number of SCC: " << res << endl;
+    cout << "Nodes of each SCC: " << endl;
+    for(auto &d : scc_list) {
+        for(int &u : d) cout << u << " ";
+        cout << endl;
+    }
 }

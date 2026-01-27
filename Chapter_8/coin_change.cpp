@@ -21,6 +21,7 @@ int coinChange(vector<int> &nums, int x) {
         }
     }
 
+    if(dp[x] == INF) return -1;      // Không đổi được
     // Truy vết: tìm những tờ tiền nào đã được sử dụng
     int i = x;
     while(i > 0) {
@@ -33,8 +34,7 @@ int coinChange(vector<int> &nums, int x) {
         }
     }
 
-    if(dp[x] == INF) return -1;      // Không đổi được
-    else return dp[x];
+    return dp[x];
 }
 
 int main() {
@@ -45,7 +45,9 @@ int main() {
 
     int res = coinChange(nums, x);
     cout << res << endl;
-    for(int coin : coins) {
-        cout << coin << " ";
-    }
+
+    if(coins.empty()) cout << "Tờ tiền " << x << " không thể đổi được!" << endl;
+    else for(int coin : coins) cout << coin << " ";
+    
+    return 0;
 }

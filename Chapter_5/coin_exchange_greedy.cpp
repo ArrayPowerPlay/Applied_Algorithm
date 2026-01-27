@@ -5,6 +5,7 @@
 using namespace std;
 
 // solution using greedy algorithm
+// Chỉ phù hợp với một số tờ tiền có mệnh giá đặc biệt
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -24,8 +25,8 @@ int main() {
         if(idx != st.begin()) {
             --idx;
             int t = *idx;
-            ++cnt;
-            x -= t;
+            cnt += x / t;
+            x %= t;
         } else break;
     }
     

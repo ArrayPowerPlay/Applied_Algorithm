@@ -3,6 +3,9 @@ using namespace std;
 
 /*Cần tìm cách phân bổ lớp cho mỗi giảng viên sao cho khối lượng giảng dạy
 lớn nhất giữa các giảng viên là nhỏ nhất
+Khối lượng giảng dạy của mỗi giảng viên là tổng số tín chỉ mà giảng viên đó
+được phân
+
 Output: khối lượng giảng dạy lớn nhất giữa các giảng viên*/
 
 const int INF = 1e8;
@@ -40,7 +43,7 @@ void Try(int k) {
         if(!check(k, i)) continue;
         if(lb[i] - numClass[i] > n - k + 1) return;
             
-        sol[k] = i;
+        sol[k] = i; 
         load[i] += crd[k];
         ++numClass[i];
 

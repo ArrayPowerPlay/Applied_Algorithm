@@ -12,8 +12,9 @@ using namespace std;
 int n;
 int year;
 vector<int> num;
-int cnt = 0;
+long long cnt = 0;
 
+// Lời giải sử dụng đệ quy backtrack
 void Try(int k, int curr_sum) {
     if(k > n) {
         if(curr_sum >= year) {
@@ -29,6 +30,27 @@ void Try(int k, int curr_sum) {
 
     Try(k + 1, curr_sum);
     Try(k + 1, curr_sum + num[k]);
+}
+
+// Lời giải sử dụng dp knapsack
+long long dpSolve() {
+    // dp[i] = số cách chọn tập con để có tổng bằng i
+    vector<int> dp(year + 1, 0);
+    dp[0] = 1;
+
+    for(int x : num) {
+        for(int i = year - 1; i >= x; --i) {
+            dp[i] += dp[i - x];
+        }
+    }
+
+    long long cnt_left = 0;
+    for(int i = 0; i < year; ++i) {
+        cnt_left += dp[i];
+    }
+
+    cnt = pow(2, n) - cnt_left;
+    return cnt;
 }
 
 int main() {

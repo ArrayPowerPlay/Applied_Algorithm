@@ -36,7 +36,7 @@ int goldMiningVer2(const int &n, vector<int> &nums, const int &L1, const int &L2
     // d được sắp xếp sao cho phần tử j có dp[j] lớn nhất được xếp ở đầu deque
     // Tức là lưu trữ các phần tử i < j mà dp[i] > dp[j]
     deque<int> d;
-    vector<int> dp(n + 1);
+    vector<int> dp(n + 1); 
     int best = 0;
 
     for(int i = 1; i <= n; ++i) {

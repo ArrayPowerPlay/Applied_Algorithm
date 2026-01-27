@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> mem;
+int mem[10000000];
 
 int Fibo(int n) {
     if(n <= 2) return 1;
@@ -14,6 +14,5 @@ int Fibo(int n) {
 int main() {
     int n;
     cin >> n;
-    mem.assign(n + 1, -1);
     cout << Fibo(n) << endl;
 }

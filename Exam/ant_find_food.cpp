@@ -7,11 +7,6 @@ từ ô bất kỳ ở cột 1 tới ô bất kỳ cột n. Tìm lượng thức
 có thể nhảy sang hàng m khi đi lên trên và ngược lại. Từ vị trí [i, j] con kiến có thể di chuyển đến
 vị trí [i - 1][j + 1], [i][j + 1], [i + 1][j + 1]*/
 
-int max3(const int a, const int b, const int c) {
-    int ab = (a >= b) ? a : b;
-    return (ab >= c) ? ab : c;
-}
-
 int maxFood(const int &m, const int &n, vector<vector<int>> &maze) {
     // dp[i][j] = lượng thức ăn lớn nhất có thể thu thập được khi di
     // chuyển từ ô bất kỳ từ cột đầu tiên đến ô i cột j
@@ -20,11 +15,11 @@ int maxFood(const int &m, const int &n, vector<vector<int>> &maze) {
     for(int j = 2; j <= n; ++j) {
         for(int i = 1; i <= m; ++i) {
             if(i > 1 && i < m) {
-                dp[i][j] = max3(dp[i - 1][j - 1], dp[i][j - 1], dp[i + 1][j - 1]) + maze[i][j];
+                dp[i][j] = max({dp[i - 1][j - 1], dp[i][j - 1], dp[i + 1][j - 1]}) + maze[i][j];
             } else if(i == 1) {
-                dp[i][j] = max3(dp[i][j - 1], dp[i + 1][j - 1], dp[m][j - 1]) + maze[i][j];
+                dp[i][j] = max({dp[i][j - 1], dp[i + 1][j - 1], dp[m][j - 1]}) + maze[i][j];
             } else {
-                dp[i][j] = max3(dp[i][j - 1], dp[i - 1][j - 1], dp[1][j - 1]) + maze[i][j];
+                dp[i][j] = max({dp[i][j - 1], dp[i - 1][j - 1], dp[1][j - 1]}) + maze[i][j];
             }
         }
     }

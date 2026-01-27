@@ -9,6 +9,7 @@ using namespace std;
 // Solution 1: using backtracking
 int res = 0;
 
+// k = i -> xếp lịch cho ngày thứ i + 1
 void backTrack(int k, int currOnes, int currZeros, const int &n, const int &K1, const int &K2) {
     if(k == n) {
         if((currOnes >= K1 && currOnes <= K2) || currOnes == 0) {
